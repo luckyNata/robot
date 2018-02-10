@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180210 23:50:36.578" generator="Robot 3.0.2 (Python 2.7.10 on darwin)">
+<suite source="/Users/Nataliia/Documents/javascript/testProject/src/robot.txt" id="s1" name="Robot">
+<test id="s1-t1" name="User can open site">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>https://translate.google.com.ua/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20180210 23:50:37.220" level="INFO">Opening browser 'chrome' to base url 'https://translate.google.com.ua/'.</msg>
+<status status="PASS" endtime="20180210 23:50:40.834" starttime="20180210 23:50:37.219"></status>
+</kw>
+<kw name="Translate word">
+<arguments>
+<arg>success</arg>
+<arg>успех</arg>
+</arguments>
+<kw name="Should Match Regexp" library="BuiltIn">
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<arguments>
+<arg>${word}</arg>
+<arg>create|success</arg>
+</arguments>
+<status status="PASS" endtime="20180210 23:50:40.842" starttime="20180210 23:50:40.840"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=source</arg>
+<arg>${word}</arg>
+</arguments>
+<msg timestamp="20180210 23:50:40.843" level="INFO">Typing text 'success' into text field 'id=source'.</msg>
+<status status="PASS" endtime="20180210 23:50:41.001" starttime="20180210 23:50:40.842"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>id=gt-submit</arg>
+</arguments>
+<msg timestamp="20180210 23:50:41.002" level="INFO">Clicking button 'id=gt-submit'.</msg>
+<status status="PASS" endtime="20180210 23:50:41.086" starttime="20180210 23:50:41.001"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${result}</arg>
+</arguments>
+<status status="PASS" endtime="20180210 23:50:41.356" starttime="20180210 23:50:41.087"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:41.357" starttime="20180210 23:50:40.838"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:41.357" critical="yes" starttime="20180210 23:50:37.219"></status>
+</test>
+<test id="s1-t2" name="Open login page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://${SERVER}</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20180210 23:50:41.363" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8001'.</msg>
+<status status="PASS" endtime="20180210 23:50:44.504" starttime="20180210 23:50:41.362"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>class:mainTitle</arg>
+</arguments>
+<msg timestamp="20180210 23:50:44.570" level="INFO">Current page contains element 'class:mainTitle'.</msg>
+<status status="PASS" endtime="20180210 23:50:44.570" starttime="20180210 23:50:44.505"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:44.571" critical="yes" starttime="20180210 23:50:41.360"></status>
+</test>
+<test id="s1-t3" name="Click at the link">
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:link1</arg>
+</arguments>
+<msg timestamp="20180210 23:50:44.574" level="INFO">Clicking link 'class:link1'.</msg>
+<status status="PASS" endtime="20180210 23:50:44.795" starttime="20180210 23:50:44.573"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>${ONE_CONTENT}</arg>
+</arguments>
+<status status="PASS" endtime="20180210 23:50:44.837" starttime="20180210 23:50:44.795"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:44.838" critical="yes" starttime="20180210 23:50:44.572"></status>
+</test>
+<test id="s1-t4" name="Check form">
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>class:link2</arg>
+</arguments>
+<msg timestamp="20180210 23:50:44.841" level="INFO">Clicking link 'class:link2'.</msg>
+<status status="PASS" endtime="20180210 23:50:44.966" starttime="20180210 23:50:44.840"></status>
+</kw>
+<kw name="Input values into form">
+<arguments>
+<arg>John</arg>
+<arg>qwerty</arg>
+<arg>Hello, John</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=name</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20180210 23:50:44.968" level="INFO">Typing text 'John' into text field 'id=name'.</msg>
+<status status="PASS" endtime="20180210 23:50:45.135" starttime="20180210 23:50:44.967"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=pass</arg>
+<arg>${pass}</arg>
+</arguments>
+<msg timestamp="20180210 23:50:45.135" level="INFO">Typing text 'qwerty' into text field 'id=pass'.</msg>
+<status status="PASS" endtime="20180210 23:50:45.230" starttime="20180210 23:50:45.135"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<assign>
+<var>${NAME_string}</var>
+</assign>
+<msg timestamp="20180210 23:50:45.231" level="INFO">${NAME_string} = John</msg>
+<status status="PASS" endtime="20180210 23:50:45.231" starttime="20180210 23:50:45.231"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${NAME_string}</arg>
+<arg>${POSSIBLE_NAMES}</arg>
+</arguments>
+<status status="PASS" endtime="20180210 23:50:45.232" starttime="20180210 23:50:45.232"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>id=click</arg>
+</arguments>
+<msg timestamp="20180210 23:50:45.233" level="INFO">Clicking button 'id=click'.</msg>
+<status status="PASS" endtime="20180210 23:50:45.363" starttime="20180210 23:50:45.232"></status>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${greeting}</arg>
+</arguments>
+<msg timestamp="20180210 23:50:45.382" level="INFO">Current page contains text 'Hello, John'.</msg>
+<status status="PASS" endtime="20180210 23:50:45.382" starttime="20180210 23:50:45.363"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:45.382" starttime="20180210 23:50:44.966"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:45.382" critical="yes" starttime="20180210 23:50:44.838"></status>
+</test>
+<test id="s1-t5" name="Some compare">
+<kw name="Calculate first value">
+<arguments>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${val1}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>(${my_var} * ${num} - ${my_var})</arg>
+</arguments>
+<assign>
+<var>${ctemp}</var>
+</assign>
+<msg timestamp="20180210 23:50:45.388" level="INFO">${ctemp} = 20</msg>
+<status status="PASS" endtime="20180210 23:50:45.388" starttime="20180210 23:50:45.384"></status>
+</kw>
+<msg timestamp="20180210 23:50:45.388" level="INFO">${val1} = 20</msg>
+<status status="PASS" endtime="20180210 23:50:45.388" starttime="20180210 23:50:45.384"></status>
+</kw>
+<kw name="Calculate first value">
+<arguments>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${val2}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>(${my_var} * ${num} - ${my_var})</arg>
+</arguments>
+<assign>
+<var>${ctemp}</var>
+</assign>
+<msg timestamp="20180210 23:50:45.390" level="INFO">${ctemp} = 20</msg>
+<status status="PASS" endtime="20180210 23:50:45.391" starttime="20180210 23:50:45.390"></status>
+</kw>
+<msg timestamp="20180210 23:50:45.391" level="INFO">${val2} = 20</msg>
+<status status="PASS" endtime="20180210 23:50:45.392" starttime="20180210 23:50:45.389"></status>
+</kw>
+<kw name="Compare values">
+<arguments>
+<arg>${val1}</arg>
+<arg>${val2}</arg>
+</arguments>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${num1}</arg>
+<arg>${num2}</arg>
+</arguments>
+<status status="PASS" endtime="20180210 23:50:45.393" starttime="20180210 23:50:45.393"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:45.393" starttime="20180210 23:50:45.392"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:45.393" critical="yes" starttime="20180210 23:50:45.383"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20180210 23:50:45.626" starttime="20180210 23:50:45.395"></status>
+</kw>
+<status status="PASS" endtime="20180210 23:50:45.626" starttime="20180210 23:50:36.584"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="5">Critical Tests</stat>
+<stat fail="0" pass="5">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Robot" pass="5">Robot</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

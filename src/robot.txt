@@ -1,0 +1,64 @@
+*** Settings ***
+Library   Selenium2Library
+Suite Setup
+Suite Teardown  Close All Browsers
+
+*** Variables ***
+
+${SERVER}   localhost:8001
+${ONE_CONTENT}  Aargau canton
+${URL}   two
+${EMPTY}
+${POSSIBLE_NAMES}    John
+${my_var}   5
+
+*** Test Cases ***
+
+User can open site
+    Open Browser    https://translate.google.com.ua/  chrome
+    Translate word   success   успех
+
+Open login page
+      Open Browser    http://${SERVER}  chrome
+      Page Should Contain Element   class:mainTitle
+
+Click at the link
+      Click Link  class:link1
+      Wait Until Page Contains  ${ONE_CONTENT}
+
+Check form
+    Click Link  class:link2
+    Input values into form  John  qwerty  Hello, John
+
+Some compare
+    ${val1}=    Calculate first value  5
+    ${val2}=   Calculate first value  5
+    Compare values  ${val1}   ${val2}
+
+
+*** Keywords ***
+
+Calculate first value
+  [Arguments]   ${num}
+  ${ctemp}=   evaluate  (${my_var} * ${num} - ${my_var})
+  [Return]    ${ctemp}
+
+Compare values
+   [Arguments]   ${num1}   ${num2}
+   Should Be Equal  ${num1}  ${num2}
+
+Translate word
+    [Arguments]   ${word}   ${result}
+    Should match regexp  ${word}  create|success
+    Input Text    id=source   ${word}
+    Click Button  id=gt-submit
+    Wait Until Page Contains  ${result}
+
+Input values into form
+    [Arguments]   ${name}   ${pass}   ${greeting}
+    Input Text    id=name  ${name}
+    Input Text    id=pass  ${pass}
+    ${NAME_string}=    Convert to string  ${name}
+    Should Be Equal As Strings   ${NAME_string}  ${POSSIBLE_NAMES}
+    Click Button    id=click
+    Page Should Contain   ${greeting}

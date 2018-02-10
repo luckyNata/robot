@@ -1,0 +1,3 @@
+${SERVER}   localhost:8001
+${ONE_CONTENT}  Aargau canton
+${URL}   two

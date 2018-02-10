@@ -1,0 +1,20 @@
+<div>
+  <form #myForm="ngForm">
+    <div>
+      <label for="name"></label>
+      <input type="text"
+             id="name"
+             name="user_name"
+             [(ngModel)]="user.name">
+    </div>
+    <div>
+      <label for="pass"></label>
+      <input type="text"
+             id="pass"
+             name="user_pass"
+             [(ngModel)]="user.pass">
+    </div>
+    <button id="click" (click)="addNameOfUser()">Click</button>
+  </form>
+  <div>{{added}}</div>
+</div>
